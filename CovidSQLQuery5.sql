@@ -150,6 +150,26 @@ where dea.continent is not null
 order by 2,3
 
 
+
+
+
+-- KB Using SubQuery to perform  Calculation on Partition By in previous query
+select TotalVac.continent as Continent,TotalVac.location as Location,TotalVac.population as Population,TotalVac.new_vaccinations as New_Vaccination,(TotalVac.RollingPeopleVaccinated/TotalVac.population)*100 
+FROM
+(
+Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
+, SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
+From PortfolioProject..CovidDeaths dea
+Join PortfolioProject..CovidVaccinations vac
+	On dea.location = vac.location
+	and dea.date = vac.date
+where dea.continent is not null 
+--order by 2,3
+)TotalVac
+
+
+
+
 -- Using CTE to perform Calculation on Partition By in previous query
 
 With PopvsVac (Continent, Location, Date, Population, New_Vaccinations, RollingPeopleVaccinated)
