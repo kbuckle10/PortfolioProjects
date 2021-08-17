@@ -172,6 +172,8 @@ From PopvsVac
 
 -- Using Temp Table to perform Calculation on Partition By in previous query
 
+-- Using Temp Table to perform Calculation on Partition By in previous query
+
 DROP Table if exists #PercentPopulationVaccinated
 Create Table #PercentPopulationVaccinated
 (
@@ -191,7 +193,7 @@ From PortfolioProject..CovidDeaths dea
 Join PortfolioProject..CovidVaccinations vac
 	On dea.location = vac.location
 	and dea.date = vac.date
---where dea.continent is not null 
+where dea.continent is not null 
 --order by 2,3
 
 Select *, (RollingPeopleVaccinated/Population)*100
