@@ -3,6 +3,8 @@ Queries used for Tableau Project
 */
 
 
+-- Link to Dashboard on Tableau Public
+-- https://public.tableau.com/app/profile/kristopher.buckle/viz/CovidDashboard2020-2021_16299723644290/Dashboard1
 
 -- 1. 
 
